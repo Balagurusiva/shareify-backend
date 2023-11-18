@@ -17,7 +17,7 @@ router.post  ('/', async (req,res) =>{
      }
         const existingUser = await User.findOne({"name":req.body.name})
         if(existingUser) return res.status(403).send("user already exits try anothe user name")
-        
+         
         const user = await User.create(newUser);
         return res.status(200).send("user account created")
      } catch (error) {
