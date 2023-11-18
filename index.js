@@ -5,7 +5,7 @@ import morgan from "morgan";
 import dotenv from "dotenv"
 
 import userRoutes from './routes/users.js'
-import authUserRoutes from './routes/authUser.js'
+import router from './routes/authUser.js'
 
 dotenv.config()
 const app = express()
@@ -17,7 +17,8 @@ app.use(morgan("common"))
 
 //routes
 app.use('/api/user', userRoutes)
-app.use('/api/auth', authUserRoutes)
+app.use('/api/auth', router)
+app.use('/api', router)
 
 
 
