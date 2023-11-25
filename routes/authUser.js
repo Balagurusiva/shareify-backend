@@ -39,7 +39,7 @@ router.get('/login', (req,res) =>{
          if(!user) return res.status(404).send("user not found")
          
          const isCorrectPassword = await bcrypt.compare(password, user.password) 
-        console.log(isCorrectPassword)
+        !isCorrectPassword && res.status(400).json({"error":"invalid password"})
 
         
          if(user &&  isCorrectPassword ) return  res.status(200).json(user)
