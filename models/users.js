@@ -35,13 +35,13 @@ const UserSchema = mongoose.Schema({
         type: Array,
         default: []
     },
-    isAdmin: {
-        type: Boolean,
-        default: false
-    },
     city: {
         type: String,
         max: 50
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
     },
     desc: {
         type: String,
