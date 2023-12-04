@@ -15,9 +15,9 @@ router.post('/', async (req, res) => {
             email: req.body.email,
             password: hashedPassword
         }
-        const existingUser = await User.findOne({ "userName": req.body.name })
+        const existingUser = await User.findOne({ "email": req.body.email })
 
-        if (existingUser) return res.status(403).send("user already exits try anothe user name")
+        if (existingUser) return res.status(403).send("user already exits with this email id")
 
         const user = await User.create(newUser);
         return res.status(200).send("user account created")
@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
         !isCorrectPassword && res.status(400).json({ "error": "invalid password" })
 
 
-        if (user && isCorrectPassword) return res.status(200).json(user)
+        if (user && isCorrectPassword) return res.status(200).json({"msg":"user logged successfullu", "data":user})
 
     } catch (error) {
         console.log(error)
