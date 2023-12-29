@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import helmet from "helmet";
 import morgan from "morgan";
 import dotenv from "dotenv"
+import cors from 'cors'
 
 import userRoutes from './routes/users.js'
 import authRouter from './routes/authUser.js'
@@ -14,6 +15,7 @@ const app = express()
 //middleware
 app.use(express.json())
 app.use(helmet())
+app.use(cors())
 app.use(morgan("common"))
 
 //routes
